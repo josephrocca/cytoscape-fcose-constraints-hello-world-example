@@ -8,7 +8,6 @@
   <script src="https://unpkg.com/cytoscape@3.18.1/dist/cytoscape.min.js"></script>
   <script src="https://unpkg.com/layout-base@2.0.0/layout-base.js"></script>
   <script src="https://unpkg.com/cose-base@2.0.0/cose-base.js"></script>
-  <script src="https://unpkg.com/cytoscape-layout-utilities@1.0.2/cytoscape-layout-utilities.js"></script>
   <script src="https://unpkg.com/cytoscape-fcose@2.0.0/cytoscape-fcose.js"></script>
 
 </head>
@@ -27,7 +26,6 @@
       cyInstance.layout({
         name: "random",
         animate: true,
-        animationDuration: 1000
       }).run();        
     });          
 
@@ -55,15 +53,6 @@
         container: cytoscapeEl,
         
         ready: function() {
-          let layoutUtilities = this.layoutUtilities({
-            desiredAspectRatio: this.width()/this.height(),
-            componentSpacing: 30
-          });
-          this.nodes().forEach(function(node) {
-            let size = 10;
-            node.css("width", size);
-            node.css("height", size);
-          });
           this.layout({
             name: "fcose",
             alignmentConstraint: constraints.alignmentConstraint,
@@ -74,7 +63,7 @@
           {
             selector: 'node',
             style: {
-              'label': "data(id)",
+              'label': 'data(id)',
               'background-color': '#2B65EC'
             }
           },
